@@ -27,14 +27,14 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
   <div class="container d-flex align-items-center">
-    <a class="navbar-brand" href="/home" (click)="closeMenu()"><img src="images/logo.png" alt="logo" width="80"> My Second Home Family DayCare</a>
+    <a class="navbar-brand" style="font-size: clamp(13px, 2vw, 22px) !important;" href="/home" (click)="closeMenu()"><img src="images/logo.png" alt="logo" width="80"> My Second Home Family DayCare</a>
     <button class="navbar-toggler"
       type="button"
       (click)="toggleMenu()"
       [attr.aria-expanded]="menuOpen()"
       aria-controls="ftco-nav"
       aria-label="Toggle navigation">
-      <span class="oi oi-menu"></span> Menu
+      <span class="oi oi-menu flaticon-menu-icon"></span> Menu <i class="bi bi-list"></i>
     </button>
     <div class="collapse navbar-collapse" [class.show]="menuOpen()" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
