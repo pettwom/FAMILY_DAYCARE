@@ -45,3 +45,14 @@ swiper-slide {
     0 0 30px #ffffff,
     0 0 80px #ffffff;
 }
+--parallax
+.hero-wrap {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  will-change: background-position;
+  min-height: 500px; /* ajusta según el diseño, esto es lo que faltaba */
+  position: relative;
+  display: flex;
+  align-items: center; /* para centrar el contenido verticalmente, como en el template original */
+}

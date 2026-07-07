@@ -36,7 +36,7 @@ export class FtcoAnimateDirective implements AfterViewInit, OnDestroy {
           }
         });
       },
-      { threshold: 0.15 },
+      { threshold: 0.8 },
     );
 
     this.observer.observe(this.el.nativeElement);

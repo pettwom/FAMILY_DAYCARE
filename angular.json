@@ -27,6 +27,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "public/css/flaticon.css",
               "node_modules/swiper/swiper-bundle.css"
             ]
           },

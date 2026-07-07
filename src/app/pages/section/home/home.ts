@@ -4,16 +4,18 @@ import {
   ElementRef,
   ViewChild,
   CUSTOM_ELEMENTS_SCHEMA,
+  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { register } from 'swiper/element/bundle';
 import { Autoplay, Navigation, EffectFade, Pagination } from 'swiper/modules';
-import { FtcoAnimateDirective } from '../../../shared/directive/ftco-animate.directive'
+import { FtcoAnimateDirective } from '../../../shared/directive/ftco-animate.directive';
+import { ParallaxDirective } from '../../../shared/directive/parallax.directive'
 register();
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FtcoAnimateDirective],
+  imports: [CommonModule, FtcoAnimateDirective, ParallaxDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './home.html',
   styleUrl: './home.css',
@@ -22,10 +24,10 @@ export class Home implements AfterViewInit {
   @ViewChild('swiper') swiper!: ElementRef;
   @ViewChild('counterSection') counterSection!: ElementRef;
 
-  teachers = 0;
-  students = 0;
-  books = 0;
-  certificates = 0;
+  teachers = signal(0);
+  students = signal(0);
+  books = signal(0);
+  certificates = signal(0);
 
   private animationStarted = false;
 
@@ -71,15 +73,16 @@ export class Home implements AfterViewInit {
       effect: 'fade',
     });
     this.swiper.nativeElement.initialize();
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !this.animationStarted) {
             this.animationStarted = true;
-            this.animateCounter(18, (value) => (this.teachers = value));
-            this.animateCounter(351, (value) => (this.students = value));
-            this.animateCounter(564, (value) => (this.books = value));
-            this.animateCounter(300, (value) => (this.certificates = value));
+            this.animateCounter(18, (value) => this.teachers.set(value));
+            this.animateCounter(351, (value) => this.students.set(value));
+            this.animateCounter(564, (value) => this.books.set(value));
+            this.animateCounter(300, (value) => this.certificates.set(value));
             observer.disconnect();
           }
         });
@@ -92,18 +95,12 @@ export class Home implements AfterViewInit {
     observer.observe(this.counterSection.nativeElement);
   }
 
-  private animateCounter(
-    target: number,
-    callback: (value: number) => void,
-    duration = 1000, // duración en ms; subí este valor si querés que el conteo sea más lento
-  ): void {
+  private animateCounter(target: number, callback: (value: number) => void, duration = 2000): void {
     const startTime = performance.now();
 
     const animate = (currentTime: number) => {
       const progress = Math.min((currentTime - startTime) / duration, 1);
-
       callback(Math.floor(progress * target));
-
       if (progress < 1) {
         requestAnimationFrame(animate);
       }
