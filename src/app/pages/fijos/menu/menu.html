@@ -34,11 +34,13 @@
       [attr.aria-expanded]="menuOpen()"
       aria-controls="ftco-nav"
       aria-label="Toggle navigation">
-      <span class="oi oi-menu flaticon-menu-icon"></span> Menu <i class="bi bi-list"></i>
+      <span class="oi oi-menu flaticon-menu-icon"></span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+</svg>
     </button>
     <div class="collapse navbar-collapse" [class.show]="menuOpen()" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active"><a href="index.html" class="nav-link pl-0">Home</a></li>
+        <li class="nav-item active"><a href="index.html" class="nav-link pl-0">Inicio</a></li>
         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
         <li class="nav-item"><a href="teacher.html" class="nav-link">Teacher</a></li>
         <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>

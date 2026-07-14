@@ -10828,12 +10828,12 @@ h5,
 .owl-carousel {
   position: relative;
 }
-.owl-carousel .owl-item {
+/* .owl-carousel .owl-item {
   opacity: 0.4;
 }
 .owl-carousel .owl-item.active {
   opacity: 1;
-}
+} */
 .owl-carousel .owl-nav {
   position: absolute;
   top: 50%;
@@ -10892,12 +10892,12 @@ h5,
 .owl-carousel:hover .owl-nav .owl-next {
   right: -25px;
 }
-.owl-carousel.home-slider {
+.home-slider {
   position: relative;
   height: 600px;
   z-index: 0;
 }
-.owl-carousel.home-slider .slider-item {
+.home-slider .slider-item {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -10906,11 +10906,11 @@ h5,
   z-index: 0;
 }
 @media (max-width: 1199.98px) {
-  .owl-carousel.home-slider .slider-item {
+  .home-slider .slider-item {
     /* background-position: center center !important; */
   }
 }
-.owl-carousel.home-slider .slider-item .overlay {
+.home-slider .slider-item .overlay {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -10919,11 +10919,11 @@ h5,
   background: #000000;
   opacity: 0.2;
 }
-.owl-carousel.home-slider .slider-item .slider-text {
+.home-slider .slider-item .slider-text {
   height: 600px;
 }
 @media (max-width: 767.98px) {
-  .owl-carousel.home-slider .slider-item .slider-text {
+  .home-slider .slider-item .slider-text {
     text-align: center;
   }
 }
@@ -11069,21 +11069,37 @@ h5,
 .bg-primary {
   background: #1eaaf1;
 }
+.text-primary {
+  color: #1eaaf1!important;
+}
 
 .bg-secondary {
   background: #fda638 !important;
+}
+.text-secondary {
+  color: #fda638 !important;
 }
 
 .bg-tertiary {
   background: #8cc152;
 }
 
+.text-tertiary {
+  color: #8cc152!important;
+}
+
 .bg-quarternary {
   background: #f1453d;
+}
+.text-quarternary {
+  color: #f1453d !important;
 }
 
 .bg-fifth {
   background: #5d50c6;
+}
+.text-fifth {
+  color: #5d50c6!important;
 }
 
 .ftc-no-pb {
@@ -11981,7 +11997,7 @@ textarea.form-control {
 .testimony-section {
   position: relative;
 }
-.testimony-section .owl-carousel {
+.testimony-section{
   margin: 0;
 }
 .testimony-section .owl-carousel .owl-stage-outer {

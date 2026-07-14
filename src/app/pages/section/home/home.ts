@@ -5,12 +5,13 @@ import {
   ViewChild,
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
+  HostListener,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { register } from 'swiper/element/bundle';
 import { Autoplay, Navigation, EffectFade, Pagination } from 'swiper/modules';
 import { FtcoAnimateDirective } from '../../../shared/directive/ftco-animate.directive';
-import { ParallaxDirective } from '../../../shared/directive/parallax.directive'
+import { ParallaxDirective } from '../../../shared/directive/parallax.directive';
 register();
 @Component({
   selector: 'app-home',
@@ -23,7 +24,16 @@ register();
 export class Home implements AfterViewInit {
   @ViewChild('swiper') swiper!: ElementRef;
   @ViewChild('counterSection') counterSection!: ElementRef;
+  @HostListener('window:scroll')
+  onScroll() {
+    const swiper = this.swiper?.nativeElement?.swiper;
 
+    if (!swiper) return;
+
+    swiper.update();
+    swiper.updateSlides();
+    swiper.updateProgress();
+  }
   teachers = signal(0);
   students = signal(0);
   books = signal(0);
