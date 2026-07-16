@@ -6,12 +6,15 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   signal,
   HostListener,
+  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { register } from 'swiper/element/bundle';
 import { Autoplay, Navigation, EffectFade, Pagination } from 'swiper/modules';
 import { FtcoAnimateDirective } from '../../../shared/directive/ftco-animate.directive';
 import { ParallaxDirective } from '../../../shared/directive/parallax.directive';
+import { HttpServices } from '../../../services/http-services';
+
 register();
 @Component({
   selector: 'app-home',
@@ -21,7 +24,7 @@ register();
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements AfterViewInit {
+export class Home implements AfterViewInit, OnInit {
   @ViewChild('swiper') swiper!: ElementRef;
   @ViewChild('counterSection') counterSection!: ElementRef;
   @HostListener('window:scroll')
@@ -38,7 +41,7 @@ export class Home implements AfterViewInit {
   students = signal(0);
   books = signal(0);
   certificates = signal(0);
-
+  constructor(private service: HttpServices) {}
   private animationStarted = false;
 
   slides = [
@@ -104,6 +107,28 @@ export class Home implements AfterViewInit {
 
     observer.observe(this.counterSection.nativeElement);
   }
+  ngOnInit(): void {
+    this.bienvenido();
+    this.docente();
+    this.slider();
+    this.admin();
+    this.ofrecemos();
+    this.cursos();
+  }
+  bienvenido() {
+    this.service.get(`bienvenido`).subscribe(res=>{
+      console.log(res,'<=== resultado')
+    });
+  }
+  docente() {
+    this.service.get(`docente/docenteImagen`).subscribe(res=>{
+      console.log(res,'<=== resultado')
+    });
+  }
+  slider() {}
+  admin() {}
+  ofrecemos() {}
+  cursos() {}
 
   private animateCounter(target: number, callback: (value: number) => void, duration = 2000): void {
     const startTime = performance.now();
